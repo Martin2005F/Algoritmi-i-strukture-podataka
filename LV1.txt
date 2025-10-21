@@ -201,7 +201,8 @@ int main()
     int rezultat = bin_pret(p, n, x);
     
     printf("%d", rezultat);
-
+    printf("vrijeme mjerenja je %.6fms", (double)(t2-t1) / CLOCKS_PER_SEC);
     return 0;
 
 }
+
