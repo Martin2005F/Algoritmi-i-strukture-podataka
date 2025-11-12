@@ -7,6 +7,9 @@ typedef struct OE_ {
     struct OE_ *sljedeci;
 } OE_;
 
+
+
+
 void gen(int v[], int n) {
     for (int i = 0; i < n; i++) {
         v[i] = rand() % 100;
@@ -51,6 +54,17 @@ int linList(OE_* node, int x) {
     return -1;
 }
 
+
+void freeList(OE_* head) {
+    OE_* temp;
+    while (head != NULL) {
+        temp = head;          // zapamti trenutni čvor
+        head = head->sljedeci; // idi na sljedeći
+        free(temp);           // oslobodi trenutni
+    }
+}
+
+
 int main() {
     int n, x;
     clock_t t1, t2, t3, t4, t5, t6, t7, t8;
@@ -94,5 +108,7 @@ int main() {
     printf("Vrijeme pretrage niza: %.3f ms\n", (double)(t6 - t5) * 1000 / CLOCKS_PER_SEC);
     printf("Vrijeme pretrage liste: %.3f ms\n", (double)(t8 - t7) * 1000 / CLOCKS_PER_SEC);
 
+    freeList(headNode);
     return 0;
 }
+
